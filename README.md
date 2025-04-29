@@ -32,4 +32,4 @@ This project demonstrates the deployment of a basic Flask web application on an 
 1.  **Clone the repository:** Clone the repository to your EC2 instance using `git clone <repository_url>`.
 2.  **Install dependencies:** Navigate to the project directory on your EC2 instance and install the necessary Python dependencies using `pip install -r requirements.txt`. It is recommended to do this within a virtual environment.
 3.  **Run the Flask app:** Start the Flask app on the EC2 instance using `python app.py`. Ensure the app is running on the correct port (typically 5000).
-4.  **Test the app:** Run the unit tests to check if the application is functioning correctly using `python -m unittest tests.py`.
+4.  **Test the app:** Run the unit tests to check if the application is functioning correctly using `python -m unittest test.py`.
