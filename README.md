@@ -1,40 +1,117 @@
-Secure Web Application Deployment with CI/CD
-Project Overview
+Secure Web Application Deployment with Flask
 
-This project focuses on deploying a simple web application (Flask) on an EC2 instance using a secure connection (via HTTPS) and following DevOps best practices.
-Steps Followed
-1. Set Up a Simple Web Application
+Python
+Flask
+AWS
 
-    A Flask web application was created as a basic app.
+This project demonstrates the deployment of a basic Flask web application on an AWS EC2 instance. The application is designed to be publicly accessible and includes unit tests to ensure proper functionality.
+Key Features
 
-    The app was uploaded to GitHub and includes basic routes.
+    Flask Web Application: A simple Flask app serving a basic homepage
 
-2. Launch a Cloud Server (EC2 Instance)
+    EC2 Deployment: Hosted on an AWS EC2 Ubuntu instance for public accessibility
 
-    An AWS EC2 instance was set up to host the Flask web app.
+    Unit Testing: Uses Python's unittest framework to verify application functionality
 
-    Necessary packages, including Python 3, were installed.
+    Python 3: Developed with Python 3 using virtual environment for package management
 
-    UFW firewall was configured to restrict unnecessary access.
+Project Structure
 
-3. Run Flask Application on EC2 Instance
+project-root/
+│
+├── app.py                # Main Flask application file
+├── tests/                 # Test directory
+│   └── test_app.py        # Unit tests for the Flask app
+├── requirements.txt       # Python dependencies
+└── README.md              # This documentation file
 
-    The Flask app was configured to run on the EC2 instance using the python3 app.py command.
+Prerequisites
 
-    The app was initially accessible on the EC2 instance's local IP (127.0.0.1).
+    AWS EC2 Instance (Ubuntu-based)
 
-4. Expose the App Externally
+    Python 3 installed (both local machine and EC2 instance)
 
-    The Flask app was configured to accept connections from any external IP by using app.run(host='0.0.0.0', port=5000).
+    GitHub repository for code storage and version control
 
-    The app is now accessible via the EC2 public IP.
+    Basic knowledge of Flask and AWS EC2
 
-5. Secure the Application
+Setup Instructions
 
-    ngrok was used to expose the application securely via HTTPS.
+    Clone the repository:
+    bash
 
-    A tunnel was created using ngrok, which allows external access to the Flask app with a secure, temporary domain.
+git clone <repository-url>
+cd <project-directory>
 
-6. Testing the Flask Application
+Set up virtual environment (recommended):
+bash
 
-To ensure the functionality of the Flask app, a simple test was created using Python's unittest framework. The test verifies that the home page (/) is accessible and returns a successful status code.
+python3 -m venv venv
+source venv/bin/activate
+
+Install dependencies:
+bash
+
+pip install -r requirements.txt
+
+Run the Flask application:
+bash
+
+python app.py
+
+Run tests:
+bash
+
+    python -m unittest tests/test_app.py
+
+Deployment on EC2
+
+    SSH into your EC2 instance
+
+    Clone the repository as shown above
+
+    Install dependencies
+
+    Run the application with:
+    bash
+
+    flask run --host=0.0.0.0 --port=5000
+
+    Configure security groups to allow inbound traffic on port 5000
+
+Testing
+
+The project includes unit tests to verify:
+
+    The homepage loads correctly
+
+    The application returns a 200 status code for the main route
+
+Run tests with:
+bash
+
+python -m unittest tests/test_app.py
+
+Security Considerations
+
+    The application is configured to run on 0.0.0.0 to make it accessible on the EC2 instance
+
+    For production use, consider:
+
+        Adding proper authentication
+
+        Using HTTPS with a reverse proxy (Nginx/Apache)
+
+        Implementing additional security headers
+
+        Using a production WSGI server (Gunicorn, uWSGI)
+
+License
+
+This project is open-source and available under the MIT License.
+Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request.
+Contact
+
+For questions or support, please open an issue in the repository.
